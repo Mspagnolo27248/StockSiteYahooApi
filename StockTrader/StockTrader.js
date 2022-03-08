@@ -57,15 +57,16 @@ class StockTrader {
         dips[i]["max"] = max_[1]
         dips[i]["days_to_max"] = max_[0][1]
     }
-    return dips
+    return dips //{date:DATE,psotion:POSITION,value:DIP,max:RECOVERY,days_to_max:DAYS}
 }
 
 //Holding Period Returns:(End Period / Begin Period) - 1
     static returns(data){
         let returns = []
-        for(const i in data){
+        let prices = data.map(a=>a.adjClose).reverse()
+        for(const i in prices){
             if(i>0){
-                returns.push((data[i].adjClose/data[i-1].adjClose)-1)
+                returns.push((prices[i]/prices[i-1])-1)
             }
             else{
                 returns.push(0)
@@ -77,7 +78,7 @@ class StockTrader {
 
     //Find The Dips
    static findTheDips = function (data, window=3, hurdle=-.02) {
-        var dates =   data.map(a => a.date)
+        var dates =   data.map(a => a.date).slice().reverse()
         var returns = this.returns(data)
         const dips = []
         var hurdleReturn = hurdle
@@ -123,7 +124,7 @@ class StockTrader {
 //Find the Max return post dip.
     static findActReturn = (data, event, window=9) => {
         var returns = this.returns(data)
-        var StartPosition = data.findIndex(x => x.date === event.date)
+        var StartPosition = data.slice().reverse().findIndex(x => x.date === event.date)
         var valueSpace = returns.slice(StartPosition + 1, StartPosition + 1 + window)
         var maxReturn = 0
         var maxPosition = []
