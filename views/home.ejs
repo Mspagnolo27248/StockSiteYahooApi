@@ -8,9 +8,24 @@
 </head>
 <body>
     <%- include("partials/header") -%>
-
+<div>
     <form action="/" method="post">
-        <button type="submit"></button>
+        <label for="ticker">Symbol</label>
+        <input type="text" name="ticker" id=""><br>
+        <label for="from">From:</label>
+        <input type="text" name="from" id=""><br>
+        <label for="to">To:</label>
+        <input type="text" name="to" id=""><br>
+        <label for="period">Period: ex 'd'</label>
+        
+        <select name="period" id="cars">
+        <option value="d">Daily</option>
+        <option value="w">Weekly</option>
+        <option value="m">Monthly</option>
+        </select>
+        <button type="submit">Get Data</button>
     </form>
+</div>
+
 </body>
 </html>

@@ -15,14 +15,15 @@ app.get("/",(req,res)=>{
 })
 
 app.post("/",(req,res)=>{
-    ticker = "SPY"
-    to = '2022-03-05'
-    from = '2022-01-01'
-    period='d'
-    debugger
+    ticker = req.body.ticker
+    to = req.body.to
+    from = req.body.from
+    period=req.body.period
+  
      StockTrader.historical(ticker,from,to,period,(data)=>{
-        
-        res.send(data.map(a => a.adjClose))
+        //console.log(StockTrader.Returns(data))
+       // res.send([data.map(a => a.adjClose),StockTrader.Average(data,3)])
+       res.send(StockTrader.Trader(data,3,9,-.02))
     })
   
   
