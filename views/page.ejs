@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>StockTrader</title>
+</head>
+<body>
+    <%- include("partials/sidebar") -%>
+    <div class="main">
+        <div class="title">
+            <h1 style="color: white;font-family: 'Fredoka', sans-serif; font-size: 50px;">StockTrader</h1>
+        </div>
+
+        <div class="search">
+            <form action="/" method="post">
+                <input name="ticker" type="text" style="    
+                width: 50%;
+                background-color: white;
+                border-radius: 8px;
+                border: 1px #000 solid;
+                padding: 5px 5px 5px 25px;">
+                <br>
+                  <button type="submit" class="ticker-search">Search</button>
+            </form>
+         
+        </div>
+      
+
+    </div>
+
+</body>
+</html>

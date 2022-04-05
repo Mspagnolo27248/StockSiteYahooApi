@@ -5,6 +5,7 @@ class StockTrader {
         this.yahooFinance = yahooFinance;
     }
 
+// Get Stock Data from Yahoo Finance
     static historical(symbol = 'SPY', from = '2022-01-01', to = '2022-01-10', period = 'd', callback) {
         yahooFinance.historical({
             symbol: symbol,
@@ -18,6 +19,7 @@ class StockTrader {
         });
     }
 
+//Simpe Sum Function
     static sum = (previousValue, currentValue) => previousValue + currentValue;
 
 //Moving Average
@@ -58,7 +60,7 @@ class StockTrader {
         dips[i]["days_to_max"] = max_[0][1]
     }
     return dips //{date:DATE,psotion:POSITION,value:DIP,max:RECOVERY,days_to_max:DAYS}
-}
+    }
 
 //Holding Period Returns:(End Period / Begin Period) - 1
     static returns(data){
@@ -143,10 +145,32 @@ class StockTrader {
     }
 
 
+//Frequency Table from Dips Data
+    static TraderResults(results){
+        let freq = {wins:0,loss:0}
 
-  
+        for (const event of results){
+            if(event.max>Math.abs(event.value)){
+                freq['wins']+=1
+            }
+            else{
+                freq['loss']+=1
+            }
+        }
+        return freq  //{wins:0,loss:0}
+        /*
+        Input 
+        {
+        "date": "2022-02-14T05:00:00.000Z",
+        "position": 29,
+        "value": -0.04095368164851598,
+        "max": 0.017247691973698354,
+        "days_to_max": 2
 }
+        */ 
+    }    
 
+}
 
 
 module.exports = StockTrader;

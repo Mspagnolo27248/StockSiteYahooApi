@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include("partials/sidebar") -%>
+<div class="main">
+    <form action="/stocktrader" method="post">
+      
+        <h3 style="width: 200px;">Ticker Lookup</h3>
+             
+        <label for="ticker">Symbol</label>
+        <input type="text" name="ticker" id=""><br>
+        <label for="from">From:</label>
+        <input type="text" name="from" id=""><br>
+        <label for="to">To:</label>
+        <input type="text" name="to" id=""><br>
+        <label for="period">Period:</label>
+        
+        <select name="period" id="cars">
+        <option value="d">Daily</option>
+        <option value="w">Weekly</option>
+        <option value="m">Monthly</option>
+        </select><br>
+        <button type="submit">Get Data</button>
+    </form>
+    <% if(results !== "") {%>
+    <table style="border:1px solid;border-collapse: collapse;">
+        <tr>
+            <th>Date</th>
+            <th>Dip % </th>
+            <th>Rebound % </th>
+            <th>Days to Max</th>
+            
+        </tr>
+        <% for(var i=0; i<results.length;i++) { %>
+            <tr>
+                <td> <%=results[i].date.toString().substring(0,15) %></td>
+                <td> <%= Math.round(results[i].value*1000)/10 %>%</td>
+                <td> <%= Math.round(results[i].max*1000)/10 %>%</td>
+                <td> <%=results[i].days_to_max %></td>
+                
+               
+               </tr>
+            
+            <% } %>
+
+    </table>
+    
+     <% } %>
+     
+
+</div>
+
+</body>
+</html>

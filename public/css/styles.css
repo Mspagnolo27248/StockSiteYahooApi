@@ -1,3 +1,73 @@
 body{
-  
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color:#404040
 }
+
+input{
+
+ width: 100px;
+}
+
+label{
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+     width: 100px;
+    display: inline-block;
+}
+
+form{
+    margin: 50px 0px 25px 0px;
+}
+
+button {
+    background-color: #4170c9; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 8px;
+    margin-left: 100px;
+    }
+
+    select{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        width: 108px;
+        display: inline-block;
+        margin-bottom: 25px;
+    }
+    
+    .title{
+        margin-top: 100px;
+        margin-bottom: 50px;;
+    }
+    
+    .ticker-search{
+        background-color: #4170c9; /* Green */
+        padding: 10px;
+        margin: 25px;
+    }
+    .search{
+        text-align: center;
+    }
+
+    .invisible{
+        visibility: hidden;
+    }
+    th, td {
+        padding: 15px;
+        text-align: left;
+        border: 1px solid;
+        border-collapse: collapse;
+        
+      }
+    th{
+        background-color: black;
+        color: white;
+    }
+
+    td{
+        background-color: white;
+        color: black;
+    }

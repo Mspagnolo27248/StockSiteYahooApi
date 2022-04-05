@@ -4,28 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Finance</title>
 </head>
 <body>
-    <%- include("partials/header") -%>
-<div>
-    <form action="/" method="post">
-        <label for="ticker">Symbol</label>
-        <input type="text" name="ticker" id=""><br>
-        <label for="from">From:</label>
-        <input type="text" name="from" id=""><br>
-        <label for="to">To:</label>
-        <input type="text" name="to" id=""><br>
-        <label for="period">Period: ex 'd'</label>
-        
-        <select name="period" id="cars">
-        <option value="d">Daily</option>
-        <option value="w">Weekly</option>
-        <option value="m">Monthly</option>
-        </select>
-        <button type="submit">Get Data</button>
-    </form>
-</div>
+    <%- include("partials/sidebar") -%>
+    <div class="main">
+        <div >
+            <h1><%=ticker%></h1>
+            <p>Current Price: <%=quotes.price.regularMarketPrice%></p>
+            <p>Today's High: <%=quotes.summaryDetail.regularMarketDayHigh%></p>
+            <p>Today's Low: <%=quotes.summaryDetail.regularMarketDayLow%></p>
+        </div>
 
+    </div>
 </body>
 </html>

@@ -32,3 +32,11 @@
   .topnav .icon {
     display: none;
   }
+
+  .sidebar{
+    position: absolute;
+width: 260px;
+height: 900px;
+left: 0px;
+top: 0px;
+  }
