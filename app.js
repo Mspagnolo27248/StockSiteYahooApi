@@ -79,6 +79,45 @@ app.post("/Stocktrader", (req, res) => {
 
 });
 
+
+
+app.get("/Historical",(req,res)=>{
+    res.render("historical.ejs",{
+        quotes: "",
+        ticker: "",
+     
+    })
+})
+
+
+app.post("/Historical", (req, res) => {
+    const ticker = req.body.ticker
+    const from = req.body.from
+    const to = req.body.to
+    const period = req.body.period
+    yahooFinance.historical({
+        symbol: ticker,
+        from:from,
+        to:to,
+        period:period // see the docs for the full list
+    }, function (err, quotes) {
+        if (err) {
+            res.redirect("/historical")
+        } else {
+
+
+           
+            res.render("historical.ejs", {
+                quotes: quotes,
+                ticker: ticker,
+               
+            })
+        }
+
+    })
+
+});
+
 // app.post("/trader", (req, res) => {
 //     ticker = req.body.ticker
 //     to = req.body.to

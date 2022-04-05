@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data History</title>
+</head>
+<body>
+    <%- include("partials/sidebar") -%>
+<div class="main">
+    <form action="/historical" method="post">
+      
+        <h3 style="width: 200px;">Ticker Lookup</h3>
+             
+        <label for="ticker">Symbol</label>
+        <input type="text" name="ticker" id=""><br>
+        <label for="from">From:</label>
+        <input type="text" name="from" id=""><br>
+        <label for="to">To:</label>
+        <input type="text" name="to" id=""><br>
+        <label for="period">Period:</label>
+        
+        <select name="period" id="cars">
+        <option value="d">Daily</option>
+        <option value="w">Weekly</option>
+        <option value="m">Monthly</option>
+        </select><br>
+        <button type="submit">Get Data</button>
+    </form>
+    <% if(quotes !== "") {%>
+    <table style="border:1px solid;border-collapse: collapse;">
+        <tr>
+            <th>Date</th>
+            <th>Open</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Close</th>
+            <th>Adj Close</th>
+            <th>Volume</th>
+            
+        </tr>
+        <% for(var i=0; i<quotes.length;i++) { %>
+            <tr>
+                <td> <%=quotes[i].date.toString().substring(0,15) %></td>
+                <td> <%= Math.round(quotes[i].open*1000)/1000 %></td>
+                <td> <%= Math.round(quotes[i].high*1000)/1000 %></td>
+                <td> <%= Math.round(quotes[i].low*1000)/1000 %></td>
+                <td> <%= Math.round(quotes[i].close*1000)/1000 %></td>
+                <td> <%= Math.round(quotes[i].adjClose*1000)/1000 %></td>           
+                <td> <%= quotes[i].volume %></td>    
+               </tr>
+            
+            <% } %>
+
+    </table>
+    
+     <% } %>
+     
+
+</div>
+
+</body>
+</html>
