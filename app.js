@@ -118,20 +118,43 @@ app.post("/Historical", (req, res) => {
 
 });
 
-// app.post("/trader", (req, res) => {
-//     ticker = req.body.ticker
-//     to = req.body.to
-//     from = req.body.from
-//     period = req.body.period
 
-//     StockTrader.historical(ticker, from, to, period, (data) => {
-//         //console.log(StockTrader.Returns(data))
-//         // res.send([data.map(a => a.adjClose),StockTrader.Average(data,3)])
-//         res.send([StockTrader.Trader(data, 3, 9, -.02), StockTrader.TraderResults(StockTrader.Trader(data, 3, 9, -.02))])
-//     })
+app.get("/Data",(req,res)=>{
+    res.render("data.ejs",{
+        quotes: "",
+        ticker: "",
+     
+    })
+})
+
+app.post("/Data", (req, res) => {
+    const ticker = req.body.ticker
+    const from = req.body.from
+    const to = req.body.to
+    const period = req.body.period
+    yahooFinance.historical({
+        symbol: ticker,
+        from:from,
+        to:to,
+        period:period // see the docs for the full list
+    }, function (err, quotes) {
+        if (err) {
+            res.redirect("/data")
+        } else {
 
 
-// })
+           
+            res.render("data.ejs", {
+                quotes: quotes,
+                ticker: ticker,
+               
+            })
+        }
+
+    })
+
+});
+
 
 let port = 3000;
 
