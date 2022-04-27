@@ -194,7 +194,11 @@ app.post("/sandbox", (req, res) => {
 
 });
 
-let port = 3000;
+
+let port = process.env.PORT;
+if(port==null||port==""){
+    port = 3000;
+}
 
 app.listen(port, () => {
     console.log("App Listening on Port:" + port)
