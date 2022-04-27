@@ -10,6 +10,7 @@ app.set('view-engine', 'ejs');
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
 app.use(express.static("public"));
 
 
@@ -18,12 +19,11 @@ app.get("/", (req, res) => {
 
 })
 
-
 app.post("/", (req, res) => {
     const ticker = req.body.ticker
     yahooFinance.quote({
         symbol: ticker,
-        modules: ['price', 'summaryDetail'] // see the docs for the full list
+        modules: ['price', 'summaryDetail','defaultKeyStatistics'] // see the docs for the full list
     }, function (err, quotes) {
         if (err) {
             res.redirect("/")
@@ -38,6 +38,8 @@ app.post("/", (req, res) => {
 
 });
 
+
+
 app.get("/Stocktrader",(req,res)=>{
     res.render("stocktrader.ejs",{
         quotes: "",
@@ -46,7 +48,6 @@ app.get("/Stocktrader",(req,res)=>{
         tbl:""
     })
 })
-
 
 app.post("/Stocktrader", (req, res) => {
     const ticker = req.body.ticker
@@ -89,7 +90,6 @@ app.get("/Historical",(req,res)=>{
     })
 })
 
-
 app.post("/Historical", (req, res) => {
     const ticker = req.body.ticker
     const from = req.body.from
@@ -117,6 +117,7 @@ app.post("/Historical", (req, res) => {
     })
 
 });
+
 
 
 app.get("/Data",(req,res)=>{
@@ -155,6 +156,43 @@ app.post("/Data", (req, res) => {
 
 });
 
+
+
+app.get("/sandbox",(req,res)=>{
+    res.render("sandbox.ejs",{
+        quotes: "",
+        ticker: "",
+     
+    })
+})
+
+app.post("/sandbox", (req, res) => {
+    const ticker = req.body.ticker
+    const from = req.body.from
+    const to = req.body.to
+    const period = req.body.period
+    yahooFinance.historical({
+        symbol: ticker,
+        from:from,
+        to:to,
+        period:period // see the docs for the full list
+    }, function (err, quotes) {
+        if (err) {
+            res.redirect("/sandbox")
+        } else {
+
+
+           
+            res.render("sandbox.ejs", {
+                quotes: quotes,
+                ticker: ticker,
+               
+            })
+        }
+
+    })
+
+});
 
 let port = 3000;
 

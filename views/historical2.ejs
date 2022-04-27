@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data History</title>
+</head>
+    <!-- Must Convert EJS variables to javascript on this page -->
+    <script type="text/javascript">
+        var myData = '<%-JSON.stringify(quotes)%>'
+    </script>
+<body>
+
+    <%- include("partials/sidebar") -%>
+<div class="main">
+    <form action="/historical" method="post">
+      
+        <h3 style="width: 200px;">Ticker Lookup</h3>
+             
+        <label for="ticker">Symbol</label>
+        <input type="text" name="ticker" id=""><br>
+        <label for="from">From:</label>
+        <input type="text" name="from" id=""><br>
+        <label for="to">To:</label>
+        <input type="text" name="to" id=""><br>
+        <label for="period">Period:</label>
+        
+        <select name="period" id="cars">
+        <option value="d">Daily</option>
+        <option value="w">Weekly</option>
+        <option value="m">Monthly</option>
+        </select><br>
+        <button type="submit">Get Data</button>
+    </form>
+
+
+
+     
+
+</div>
+<div id="wrapper" style="width: 70%;"></div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+<script src="/content/gridjs.js"></script>
+</body>
+</html>

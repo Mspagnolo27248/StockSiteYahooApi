@@ -1,21 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finance</title>
+    <title>Stock Quotes</title>
 </head>
+
 <body>
     <%- include("partials/sidebar") -%>
     <div class="main">
-        <div >
-            <h1><%=ticker%></h1>
-            <p>Current Price: <%=quotes.price.regularMarketPrice%></p>
-            <p>Today's High: <%=quotes.summaryDetail.regularMarketDayHigh%></p>
-            <p>Today's Low: <%=quotes.summaryDetail.regularMarketDayLow%></p>
+        <div>
+
+            <h1><%=quotes.price.shortName%></h1>
+
+
+            <table class="'quote" style="font-size: 10px;">
+                <tr>
+                    <th>Current Price:</th>
+                    <td><%=quotes.price.regularMarketPrice%></td>
+                    <th>Previous Close:</th>
+                    <td><%=quotes.summaryDetail.previousClose%></td>
+                    <th>Change:</th>
+                    <td><%=quotes.price.MarketChange%></td>
+                    <th>Change %</th>
+                    <td><%=quotes.price.MarketChangePercent%></td>
+                </tr>
+                <tr>
+                    <th>Today's High:</th>
+                    <td> <%=quotes.summaryDetail.regularMarketDayHigh%></td>
+                    <th>Today's Low:</th>
+                    <td><%=quotes.summaryDetail.regularMarketDayLow%></td>
+                    <th>Market Time</th>
+                    <td><%=quotes.summaryDetail.regularMarketTime%></td>
+                    <th>Symbol</th>
+                    <td><%=quotes.price.symbol%></td>
+                </tr>
+                <tr>
+                    <th>Dividend Rate: </th>
+                    <td><%=quotes.summaryDetail.dividendRate%></td>
+                    <th>Dividend Yield:</th>
+                    <td><%=quotes.summaryDetail.dividendYield%>
+                    </td>
+                    <th>Dividend Date:</th>
+                    <td><%=quotes.summaryDetail.exDividendDate.toString().substring(0,10)%>
+                    </td>
+                    <th>Payout Ratio:</th>
+                    <td><%=quotes.summaryDetail.payoutRatio%>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Days Short: </th>
+                    <td> <% quotes.defaultKeyStatistics.shortRatio||0%></td>
+                    <th>Short % of Float:</th>
+                    <td><%=Math.round(quotes.defaultKeyStatistics.shortPercentOfFloat||0*1000)/10%>%</td>
+                    <th></th>
+                    <td><%=0%></td>
+                    <th></th>
+                    <td><%=0%></td>
+                </tr>
+
+                <tr>
+                    <th></th>
+                    <td><%=0%></td>
+                    <th></th>
+                    <td><%=0%></td>
+                    <th></th>
+                    <td><%=0%></td>
+                    <th></th>
+                    <td><%=0%></td>
+                </tr>
+
+
+
+            </table>
+
+
+
+
+
         </div>
 
     </div>
 </body>
+
 </html>

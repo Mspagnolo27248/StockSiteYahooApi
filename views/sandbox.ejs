@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data History</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+</head>
+<body>
+    <!-- Must Convert EJS variables to javascript on this page -->
+    <script type="text/javascript">
+        var myData = '<%-JSON.stringify(quotes)%>'
+    </script>
+
+        <%- include("partials/sidebar") -%>
+<div class="main">
+    <form action="/sandbox" method="post">
+      
+        <h3 style="width: 200px;">Ticker Lookup</h3>
+             
+        <label for="ticker">Symbol</label>
+        <input type="text" name="ticker" id=""><br>
+        <label for="from">From:</label>
+        <input type="text" name="from" id=""><br>
+        <label for="to">To:</label>
+        <input type="text" name="to" id=""><br>
+        <label for="period">Period:</label>
+        
+        <select name="period" id="cars">
+        <option value="d">Daily</option>
+        <option value="w">Weekly</option>
+        <option value="m">Monthly</option>
+        </select><br>
+        <button type="submit">Get Data</button>
+    </form>
+    <button  class = "btn-data"id="showData"></button>
+    <button class="btn-link" style="background-color: black;"></button>
+    <% if(quotes !== "") {%>
+        <!-- Load d3.js -->
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+    <table class="stock-data" id="myTable" style="border:1px solid;border-collapse: collapse;" >
+        <tr>
+            <th>Date</th>
+            <th>Open</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Close</th>
+            <th>Adj Close</th>
+            <th>Volume</th>
+            
+        </tr>
+       
+
+    </table>
+    
+     <% } %>
+     
+
+</div>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="/content/linechart.js"></script>
+// <script src="/content/data.js"></script>
+</body>
+</html>
