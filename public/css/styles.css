@@ -30,7 +30,7 @@ button {
     display: inline-block;
     font-size: 12px;
     border-radius: 8px;
-    margin-left: 100px;
+  
     }
 
     select{
@@ -75,4 +75,16 @@ button {
     }
     .table{
         font-size: small;
+    }
+
+
+    .chart{
+        padding-left: 50px;
+        padding-right: 50px;
+        height: 300px;
+         width: 500px;
+    }
+
+    .ticker-box{
+        display: inline-block;
     }

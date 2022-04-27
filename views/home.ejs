@@ -11,6 +11,22 @@
 <body>
     <%- include("partials/sidebar") -%>
     <div class="main">
+        <div style="width: 100px;float: left;">
+        <h3>Search</h3>
+        <div class="search" >
+            <form action="/" method="post">
+                <input name="ticker" type="text" style="    
+                width: 50%;
+                background-color: white;
+                border-radius: 8px;
+                border: 1px #000 solid;
+                padding: 5px 5px 5px 25px;">
+                <br>
+                  <button type="submit" class="ticker-search">Search</button>
+            </form>
+         
+        </div>
+    </div>
         <div>
 
             <h1><%=quotes.price.shortName%></h1>
@@ -39,12 +55,12 @@
                 </tr>
                 <tr>
                     <th>Dividend Rate: </th>
-                    <td><%=quotes.summaryDetail.dividendRate%></td>
+                    <td><%=quotes.summaryDetail.dividendRate||0%></td>
                     <th>Dividend Yield:</th>
-                    <td><%=quotes.summaryDetail.dividendYield%>
+                    <td><%=quotes.summaryDetail.dividendYield||0%>
                     </td>
                     <th>Dividend Date:</th>
-                    <td><%=quotes.summaryDetail.exDividendDate.toString().substring(0,10)%>
+                    <td><%=quotes.summaryDetail.exDividendDate?.toString().substring(0,10)||0%>
                     </td>
                     <th>Payout Ratio:</th>
                     <td><%=quotes.summaryDetail.payoutRatio%>

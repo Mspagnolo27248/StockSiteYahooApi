@@ -10,7 +10,7 @@
     <%- include("partials/sidebar") -%>
 <div class="main">
     <form action="/stocktrader" method="post">
-      
+      <div class="ticker-box">
         <h3 style="width: 200px;">Ticker Lookup</h3>
              
         <label for="ticker">Symbol</label>
@@ -27,6 +27,7 @@
         <option value="m">Monthly</option>
         </select><br>
         <button type="submit">Get Data</button>
+    </div>
     </form>
     <% if(results !== "") {%>
     <table style="border:1px solid;border-collapse: collapse;">
