@@ -194,6 +194,9 @@ app.post("/sandbox", (req, res) => {
 
 });
 
+app.get("/options",(req,res)=>{
+    res.render("options.ejs")
+})
 
 let port = process.env.PORT;
 if(port==null||port==""){

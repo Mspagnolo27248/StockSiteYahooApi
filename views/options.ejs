@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include("partials/sidebar") -%>
+    
+    <div style="display: inline-block;padding-left: 200px;">
+        <h1>Options Price Calculator</h1>
+        <div >
+            <label for="price">Stock Price:</label>
+            <input type="text" name="price" id="price">
+        </div>
+        <div>
+            <label for="exPrice">Exercise Price:</label>
+            <input type="text" name="exPrice" id="exPrice">
+        </div>
+        <div>
+            <label for="exDate">Expiration Date:</label>
+            <input type="text" name="exDate" placeholder="mm/dd/yyyy" id="exDate">
+        </div>
+        <div>
+            <label for="impVol">Implied Volatilty:</label>
+            <input type="text" name="impVol" placeholder=".xx" id="impVol">
+        </div>
+        
+        <div>
+            <button type="button" class="getPrice" onclick="getPrice()"></button>
+        </div>
+        <div>
+            <label for="ans">Call Price:</label>
+            <input type="text" id="answer">
+        </div>
+
+    </div>
+   
+    <script  src="/content/options.js"></script>
+</body>
+</html>
