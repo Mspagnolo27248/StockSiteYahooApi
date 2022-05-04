@@ -21,20 +21,20 @@
         </div>
         <div>
             <label for="exDate">Expiration Date:</label>
-            <input type="text" name="exDate" placeholder="mm/dd/yyyy" id="exDate">
+            <input type="date" name="exDate" placeholder="mm/dd/yyyy" id="exDate">
         </div>
         <div>
             <label for="impVol">Implied Volatilty:</label>
             <input type="text" name="impVol" placeholder=".xx" id="impVol">
         </div>
-        
-        <div>
-            <button type="button" class="getPrice" onclick="getPrice()"></button>
-        </div>
         <div>
             <label for="ans">Call Price:</label>
-            <input type="text" id="answer">
+            <input type="text" id="answer" readonly>
         </div>
+        <div style="padding-left: 150px;margin: 50px;">
+            <button type="button" class="getPrice" onclick="getPrice()">Calculate</button>
+        </div>
+    
 
     </div>
    

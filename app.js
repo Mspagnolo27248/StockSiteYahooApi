@@ -194,7 +194,7 @@ app.post("/sandbox", (req, res) => {
 
 });
 
-app.get("/options",(req,res)=>{
+app.get("/Options",(req,res)=>{
     res.render("options.ejs")
 })
 
