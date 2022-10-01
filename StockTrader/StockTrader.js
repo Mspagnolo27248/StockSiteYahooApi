@@ -86,6 +86,9 @@ class StockTrader {
         var hurdleReturn = hurdle
         //var minIndex = 0
         for (let i = 0; i < returns.length; i++) {
+            returnOne = 0;
+            returnTwo = 0;
+            returnThree = 0;
             var returnOne = returns[i]
             if (i <= (returns.length - window + 1)) {
                 var returnTwo = returns[i] + returns[i + 1]

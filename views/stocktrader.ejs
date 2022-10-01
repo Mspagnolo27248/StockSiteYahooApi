@@ -16,9 +16,9 @@
         <label for="ticker">Symbol</label>
         <input type="text" name="ticker" id=""><br>
         <label for="from">From:</label>
-        <input type="text" name="from" id=""><br>
+        <input type="date" name="from" id=""><br>
         <label for="to">To:</label>
-        <input type="text" name="to" id=""><br>
+        <input type="date" name="to" id=""><br>
         <label for="period">Period:</label>
         
         <select name="period" id="cars">
@@ -38,13 +38,13 @@
             <th>Days to Max</th>
             
         </tr>
-        <% for(var i=0; i<results.length;i++) { %>
+           <% debugger %>
+        <%  for(var i=0; i<results.length;i++) { %>
             <tr>
                 <td> <%=results[i].date.toString().substring(0,15) %></td>
                 <td> <%= Math.round(results[i].value*1000)/10 %>%</td>
                 <td> <%= Math.round(results[i].max*1000)/10 %>%</td>
-                <td> <%=results[i].days_to_max %></td>
-                
+                <td> <%=results[i].days_to_max %></td>               
                
                </tr>
             
